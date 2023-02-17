@@ -7,18 +7,18 @@ import localBaseContacts from 'helpers/localBase';
 
 const App =()=> {
 
-const [contacts, setContacts] = useState(localBaseContacts)
+const [contacts, setContacts] = useState(JSON.parse(localStorage.getItem('contacts')) ?? localBaseContacts)
 const [filter, setFilter] = useState('')
 const setNotLocalStorage = useRef(true);
 
-useEffect(()=>{
-  const localStoreContacts = localStorage.getItem('contacts');
-  const parsedContacts = JSON.parse(localStoreContacts)
-  setContacts(parsedContacts)
-  if(parsedContacts !== null){
+// useEffect(()=>{
+//   const localStoreContacts = localStorage.getItem('contacts');
+//   const parsedContacts = JSON.parse(localStoreContacts)
+//   setContacts(parsedContacts)
+//   if(parsedContacts !== null){
 
-  }
-}, [])
+//   }
+// }, [])
 
 useEffect(()=>{
   if (setNotLocalStorage.current) {
